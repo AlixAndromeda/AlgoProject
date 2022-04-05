@@ -62,8 +62,6 @@ public class projectMain {
                 System.out.println("Please enter the arrival time you wish to search for!" + "\nPlease note that this has to be in" +
                         " the format HH:MM:SS. Enter 'Back' to go back to the main menu or press '0' to quit");
 
-
-
         }
     }
 
