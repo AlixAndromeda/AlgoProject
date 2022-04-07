@@ -40,10 +40,11 @@ public class projectMain {
                         System.out.println("Thank you for using our program. Have a safe journey!");
                         break;
                     } else if (userInput.equalsIgnoreCase("back")) {
-                        System.out.println("Press '1' Search for a bus stop.");
-                        System.out.println("Press '2' Find the shortest path between 2 stops.");
-                        System.out.println("Press '3' Search for all trips with a given arrival time.");
-                        System.out.println("Press '0' If you would like to quit ");
+                        System.out.println("Please select one of the following options by enetering a number 1,2,3 or 0 to quit. " +
+                                "\nPress '1' Search for a bus stop. " +
+                                "\nPress '2' Find the shortest path between 2 stops. " +
+                                "\nPress '3' Search for all trips with a given arrival time. " +
+                                "\nPress '0' If you would like to quit.");
                         number1 = false;
                     } else if (busStops.length() != 2) {
                         System.out.println("ERROR! Please enter two stops");
