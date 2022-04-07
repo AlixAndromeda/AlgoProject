@@ -1,4 +1,3 @@
-
 import java.awt.image.AreaAveragingScaleFilter;
 import java.sql.Array;
 import java.util.Queue;
@@ -58,7 +57,7 @@ public class TST<Value> {
         else x.val = val;
         return x;
     }
-    public Iterable<String> keysWithPrefix(String prefix) {
+    public ArrayList<String> keysWithPrefix(String prefix) {
         if (prefix == null) {
             throw new IllegalArgumentException("calls keysWithPrefix() with null argument");
         }
