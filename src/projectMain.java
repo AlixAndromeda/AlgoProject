@@ -3,7 +3,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class projectMain {
@@ -18,7 +17,7 @@ public class projectMain {
         scanner.hasNextLine();
 
         // User input commands
-        System.out.println("Please select one of the following options by enetering a number 1,2,3 or 0 to quit. " +
+        System.out.println("Please select one of the following options by entering a number 1,2,3 or 0 to quit. " +
                 "\nPress '1' Search for a bus stop. " +
                 "\nPress '2' Find the shortest path between 2 stops. " +
                 "\nPress '3' Search for all trips with a given arrival time. " +
@@ -45,7 +44,7 @@ public class projectMain {
                     } else if (userInput.equalsIgnoreCase("back")) {
                         break;
                     } else {
-                        TST<Integer> TST = new TST<>();
+                        TST<Integer> TSTArray = new TST<>();
                         try {
                             FileReader readFile = new FileReader("stops.txt");
                             BufferedReader bufferedReader = new BufferedReader(readFile);
@@ -63,7 +62,7 @@ public class projectMain {
                                     String stopLon = stopData[6];
                                     String zoneID = stopData[7];
                                     String stopURL = stopData[8];
-                                    TST.put(stopName, i++);
+                                    TSTArray.put(stopName, i++);
                                 } else {
                                     fileEnd = true;
                                 }
@@ -72,25 +71,40 @@ public class projectMain {
                             readFile.close();
                         } catch (IOException e) {
                         }
-                        ArrayList<String> Peepeepoopoo = TST.keysWithPrefix(userInput.toUpperCase());
-                        for (int x = 0; x < Peepeepoopoo.size(); x++) {
-                            System.out.println(Peepeepoopoo.get(x));
-                        }
+                        boolean found = false;
+                        ArrayList<String> anythingelse = TSTArray.keysWithPrefix(userInput.toUpperCase());
+                        System.out.println("We found the following matches for your search:");
+                        for (int x = 0; x < anythingelse.size(); x++)
+                            System.out.println(anythingelse.get(x));
                     }
-                } break;
+                }
+                break;
 
 
-                //User chooses option 2
+            //User chooses option 2
             case '2':
 
 
                 //User chooses option 3
             case '3':
-                scanner.nextLine();
-                boolean number3 = true;
-                System.out.println("You have chosen option 3!");
-                System.out.println("Please enter the arrival time you wish to search for!" + "\nPlease note that this has to be in" +
-                        " the format HH:MM:SS. Enter 'Back' to go back to the main menu or press '0' to quit");
+                System.out.print("You have chosen option 3!" + "\n" + "Please enter your desired arrival time, note that this has to be entered in the format HH:MM:SS");
+                DateFormat userTimeInput = new SimpleDateFormat("HH:MM:SS");
+                boolean userChoice = false;
+                Scanner userInput = new Scanner(System.in);
+                if (!userChoice) {
+                    String userTimeChosen = userInput.nextLine();
+                    try {
+                        userTimeInput.parse(userTimeChosen);
+                        if (arrivalStopTimes.fetchOutput(userTimeChosen))
+                        userChoice = true;
+                    } catch (ParseException e) {
+                        System.out.println("You have entered an incorrect format, please make sure you use the HH:MM:SS format");
+                    }
+                }
+                userInput.close();
         }
     }
 }
+
+
+
