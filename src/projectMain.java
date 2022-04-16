@@ -95,7 +95,7 @@ public class projectMain {
                     String userTimeChosen = userInput.nextLine();
                     try {
                         userTimeInput.parse(userTimeChosen);
-                        if (arrivalStopTimes.fetchOutput(userTimeChosen))
+                        if (arrivalTime.theOutput(userTimeChosen))
                         userChoice = true;
                     } catch (ParseException e) {
                         System.out.println("You have entered an incorrect format, please make sure you use the HH:MM:SS format");
