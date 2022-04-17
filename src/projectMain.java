@@ -11,7 +11,9 @@ public class projectMain {
         Scanner scanner = new Scanner(System.in);
         // Simple Welcome
 
-        System.out.println("The following program is designed to help you plan your journey in Vancouver");
+        System.out.println("----------------------------------------------------------------------------" +
+                "\nThe following program is designed to help you plan your journey in Vancouver" + "\n----------------------------------------------------------------------------"
+        );
         System.out.println("Press any key to continue!");
         scanner.hasNextLine();
 
@@ -22,18 +24,21 @@ public class projectMain {
                 "\nPress '3' Search for all trips with a given arrival time. " +
                 "\nPress '0' If you would like to quit.");
 
+        boolean theChoice = false;
+
         int choice;
         choice = scanner.next().charAt(0);
         switch (choice) {
 
             //User quits
             case '0':
+                theChoice = true;
                 System.out.println("Thank you for using our program. Have a safe journey!");
                 break;
 
             //User chooses option 1
             case '1':
-                boolean theUserChoice = false;
+                theChoice = true;
                 System.out.println("You have chosen option 1!");
                 System.out.println("Please enter the bus stop you are looking, or type quit to quit");
                 if (scanner.hasNext()) {
@@ -63,10 +68,10 @@ public class projectMain {
 
                                     StringBuilder theString = new StringBuilder();
                                     theString.append(stopData[2]);
-                                    if (theString.substring(0 ,2 ).equals("WB") || theString.substring(0 ,2 ).equals("SB") ||
-                                            theString.substring(0 ,2 ).equals("NB") || theString.substring(0 ,2 ).equals("EB")) {
+                                    if (theString.substring(0, 2).equals("WB") || theString.substring(0, 2).equals("SB") ||
+                                            theString.substring(0, 2).equals("NB") || theString.substring(0, 2).equals("EB")) {
 
-                                        String string = theString.substring(0,2);
+                                        String string = theString.substring(0, 2);
                                         theString.delete(0, 3);
                                         theString.append(" ").append(string);
                                     }
@@ -82,25 +87,33 @@ public class projectMain {
                             readFile.close();
                         } catch (IOException e) {
                         }
-                        boolean found = false;
-                        ArrayList<String> matches = TSTArray.keysWithPrefix(userInput.toUpperCase());
-                        for (int x = 0; x < matches.size(); x++)
-                            System.out.println(matches.get(x)); //outputting the info
-                        if (matches.isEmpty()) {
-                            System.out.println("Sorry we found no matches");
 
+                            ArrayList<String> matches = TSTArray.keysWithPrefix(userInput.toUpperCase());
+                            for (int x = 0; x < matches.size(); x++)
+                                System.out.println(matches.get(x)); //outputting the info
+                            if (matches.isEmpty()) {
+                                System.out.println("Sorry we found no matches");
+
+                            }
+                            System.out.println("Have a safe journey!");
                         }
-                        System.out.println("Have a safe journey!");
                     }
-                }
+
                 break;
 
 
             //User chooses option 2
             case '2':
+                System.out.println("This part of the app is still in progress!");
+                break;
+
+            default:
+                System.out.println("Sorry you need to enter 0,1,2,3. Please try again");
+                break;
 
                 //User chooses option 3
             case '3':
+                theChoice = true;
                 System.out.print("You have chosen option 3!" + "\n" + "Please enter your desired arrival time, note that this has to be entered in the format HH:MM:SS");
                 System.out.println("Or type 'quit' to exit the program");
                 DateFormat userTimeInput = new SimpleDateFormat("HH:MM:SS");
