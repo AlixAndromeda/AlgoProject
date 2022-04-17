@@ -70,10 +70,10 @@ public class projectMain {
                         } catch (IOException e) {
                         }
                         boolean found = false;
-                        ArrayList<String> anythingelse = TSTArray.keysWithPrefix(userInput.toUpperCase());
-                        for (int x = 0; x < anythingelse.size(); x++)
-                            System.out.println(anythingelse.get(x)); //outputting the info
-                        if (anythingelse.isEmpty()) {
+                        ArrayList<String> matches = TSTArray.keysWithPrefix(userInput.toUpperCase());
+                        for (int x = 0; x < matches.size(); x++)
+                            System.out.println(matches.get(x)); //outputting the info
+                        if (matches.isEmpty()) {
                             System.out.println("Sorry we found no matches");
 
                         }
