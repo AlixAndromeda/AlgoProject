@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -12,7 +11,7 @@ import java.util.Date;
 
 public class arrivalTime {
 
-    public static boolean theOutput(String output)
+    public static boolean theResult(String output)
     {
         ArrayList<String> data = dataIntake();
         ArrayList<String> theOutput = paths(output, data);
@@ -29,6 +28,7 @@ public class arrivalTime {
             System.out.println(theOutput.get(i));
             i++;
         } while (i < theOutput.size());
+        System.out.println("Have a safe journey!");
         return true;
     }
 
@@ -38,8 +38,7 @@ public class arrivalTime {
         ArrayList<String> dataIntake = new ArrayList<String>();
         SimpleDateFormat theClock = new SimpleDateFormat("HH:mm:ss");
         String maxTime = "24:00:00";
-        try
-        {
+        try {
             String temp;
             BufferedReader fileRead = new BufferedReader(new FileReader("stop_times.txt"));
             Date theLimit = theClock.parse(maxTime);
@@ -57,7 +56,14 @@ public class arrivalTime {
                         dataIntake.add(temp);
                 }
                 if ((temp = fileRead.readLine()) != null) {
-                    do {
+                    if (!temp.isEmpty()) {
+                        String[] temp2 = temp.split(",");
+                        Date time = theClock.parse(temp2[1]);
+                        if (time.getTime() < theLimit.getTime()) {
+                            dataIntake.add(temp);
+                        }
+                    }
+                    while ((temp = fileRead.readLine()) != null) {
                         if (!temp.isEmpty()) {
                             String[] temp2 = temp.split(",");
                             Date time = theClock.parse(temp2[1]);
@@ -65,7 +71,7 @@ public class arrivalTime {
                                 dataIntake.add(temp);
                             }
                         }
-                    } while ((temp = fileRead.readLine()) != null);
+                    }
                 }
             } fileRead.close();
         }  catch (IOException | ParseException e) {
@@ -92,6 +98,4 @@ public class arrivalTime {
         }
         return paths;
     }
-
-
 }
