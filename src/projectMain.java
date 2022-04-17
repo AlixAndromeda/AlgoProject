@@ -55,12 +55,25 @@ public class projectMain {
                                     String stopID = stopData[0];
                                     String stopCode = stopData[1];
                                     String stopName = stopData[2];
-                                    String stopDesc = stopData[4];
-                                    String stopLat = stopData[5];
-                                    String stopLon = stopData[6];
-                                    String zoneID = stopData[7];
-                                    String stopURL = stopData[8];
-                                    TSTArray.place(stopName, i++);
+                                    String stopDesc = stopData[3];
+                                    String stopLat = stopData[4];
+                                    String stopLon = stopData[5];
+                                    String zoneID = stopData[6];
+                                    String stopURL = stopData[7];
+
+                                    StringBuilder s = new StringBuilder();
+                                    s.append(stopData[2]);
+                                    if (s.substring(0 ,2 ).equals("WB") || s.substring(0 ,2 ).equals("SB") ||
+                                    s.substring(0 ,2 ).equals("NB") || s.substring(0 ,2 ).equals("EB")) {
+
+                                        String st = s.substring(0,2);
+                                        s.delete(0, 3);
+                                        s.append(" ").append(st);
+                                    }
+                                    String nameOfStop;
+                                    nameOfStop = s.toString();
+
+                                    TSTArray.place(nameOfStop, i++);
                                 } else {
                                     fileEnd = true;
                                 }
