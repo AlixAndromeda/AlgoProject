@@ -21,7 +21,7 @@ public class arrivalTime {
             System.out.println("there doesn't exist any routes");
             return false;
         }
-        System.out.println(theOutput.size() + "Here you go");
+        System.out.println(theOutput.size() + " Here you go");
 
         int i = 0;
         if (i < theOutput.size()) do {
