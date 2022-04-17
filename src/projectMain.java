@@ -61,17 +61,17 @@ public class projectMain {
                                     String zoneID = stopData[6];
                                     String stopURL = stopData[7];
 
-                                    StringBuilder s = new StringBuilder();
-                                    s.append(stopData[2]);
-                                    if (s.substring(0 ,2 ).equals("WB") || s.substring(0 ,2 ).equals("SB") ||
-                                    s.substring(0 ,2 ).equals("NB") || s.substring(0 ,2 ).equals("EB")) {
+                                    StringBuilder theString = new StringBuilder();
+                                    theString.append(stopData[2]);
+                                    if (theString.substring(0 ,2 ).equals("WB") || theString.substring(0 ,2 ).equals("SB") ||
+                                            theString.substring(0 ,2 ).equals("NB") || theString.substring(0 ,2 ).equals("EB")) {
 
-                                        String st = s.substring(0,2);
-                                        s.delete(0, 3);
-                                        s.append(" ").append(st);
+                                        String string = theString.substring(0,2);
+                                        theString.delete(0, 3);
+                                        theString.append(" ").append(string);
                                     }
                                     String nameOfStop;
-                                    nameOfStop = s.toString();
+                                    nameOfStop = theString.toString();
 
                                     TSTArray.place(nameOfStop, i++);
                                 } else {
