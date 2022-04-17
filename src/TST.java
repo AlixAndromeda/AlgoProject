@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//Taken from the book
+//Taken from the book and re written to work with my code
 
 public class TST<Integer> {
     private int n;              //The size
